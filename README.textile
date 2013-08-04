@@ -1,0 +1,15 @@
+h1. Java Parent
+
+p. Maven parent POM for Java-based projects. Defines several aspects of a build-process, such as
+
+* License header
+* Outputs -sources.jar
+* Outputs -javadoc.jar
+* Compiler settings
+* OSGi infos
+* Findbugs settings
+* PMD settings
+* Cobertura settings
+* Site configuration for GitHub Pages
+
+"!https://secure.travis-ci.org/sebhoss/java-parent.png!":http://travis-ci.org/sebhoss/java-parent
