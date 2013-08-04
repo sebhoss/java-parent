@@ -32,11 +32,27 @@
   <description>Parent POM for all Java-based projects</description>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!--                                  SOURCE                                 -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <scm>
+    <connection>${scm.connection}</connection>
+    <developerConnection>${scm.developerConnection}</developerConnection>
+    <tag>master</tag>
+    <url>${scm.url}</url>
+  </scm>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!--                                PROPERTIES                               -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <properties>
     <coverage>0</coverage>
     <pmd.cpd.tokens>50</pmd.cpd.tokens>
+
+    <github.url>http://github.com/sebhoss/java-parent/</github.url>
+    <scm.connection>scm:git:git://github.com/sebhoss/java-parent.git</scm.connection>
+    <scm.developerConnection>scm:git:git@github.com:sebhoss/java-parent.git</scm.developerConnection>
+    <scm.url>http://github.com/sebhoss/java-parent</scm.url>
+    <issueManagement.url>http://github.com/sebhoss/java-parent/issues</issueManagement.url>
   </properties>
 
   <dependencies>
