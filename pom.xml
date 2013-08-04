@@ -238,37 +238,6 @@
           </execution>
         </executions>
       </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <configuration>
-          <skipDeploy>true</skipDeploy>
-        </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>com.github.sebhoss.doxia</groupId>
-            <artifactId>doxia-module-textile</artifactId>
-            <version>1.0.0</version>
-          </dependency>
-        </dependencies>
-      </plugin>
-
-      <plugin>
-        <groupId>com.github.github</groupId>
-        <artifactId>site-maven-plugin</artifactId>
-        <configuration>
-          <message>Building site for ${project.version}</message>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>site</goal>
-            </goals>
-            <phase>site-deploy</phase>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
 </project>
