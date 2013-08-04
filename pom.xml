@@ -26,8 +26,10 @@
   <!--                               INFORMATIONS                              -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <artifactId>java-parent</artifactId>
-  <packaging>pom</packaging>
   <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <inceptionYear>2013</inceptionYear>
+  <url>${github.url}</url>
   <name>Java Parent</name>
   <description>Parent POM for all Java-based projects</description>
 
