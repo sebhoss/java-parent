@@ -48,7 +48,7 @@
   <properties>
     <version.jdk>1.7</version.jdk>
     <version.tycho>0.18.1</version.tycho>
-    <version.common-resources>1.0.0</version.common-resources>
+    <version.common-resources>1.0.1</version.common-resources>
 
     <coverage>0</coverage>
     <pmd.cpd.tokens>50</pmd.cpd.tokens>
