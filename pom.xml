@@ -46,6 +46,9 @@
   <!--                                PROPERTIES                               -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <properties>
+    <version.jdk>1.7</version.jdk>
+    <version.tycho>0.18.1</version.tycho>
+
     <coverage>0</coverage>
     <pmd.cpd.tokens>50</pmd.cpd.tokens>
 
@@ -161,7 +164,7 @@
           <dependency>
             <groupId>org.eclipse.tycho</groupId>
             <artifactId>tycho-compiler-jdt</artifactId>
-            <version>0.18.1</version>
+            <version>${version.tycho}</version>
           </dependency>
           <dependency>
             <groupId>com.github.sebhoss</groupId>
