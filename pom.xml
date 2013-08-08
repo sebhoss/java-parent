@@ -85,7 +85,7 @@
         </configuration>
         <dependencies>
           <dependency>
-            <groupId>com.github.sebhoss.common</groupId>
+            <groupId>com.github.sebhoss</groupId>
             <artifactId>common-resources</artifactId>
             <version>1.0.0</version>
           </dependency>
