@@ -165,6 +165,7 @@
           <source>${version.jdk}</source>
           <target>${version.jdk}</target>
           <compilerId>jdt</compilerId>
+
         </configuration>
         <dependencies>
           <!-- This dependency provides the compiler settings -->
@@ -181,11 +182,11 @@
           </dependency>
         </dependencies>
       </plugin>
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>2.4</version>
+        <!-- Cant use 2.4.X due to https://github.com/tesla/m2eclipse-extras/issues/10 -->
+        <version>2.3.2</version>
         <configuration>
           <archive>
             <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
