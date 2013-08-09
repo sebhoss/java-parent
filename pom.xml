@@ -28,7 +28,7 @@
   <version>1.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <inceptionYear>2013</inceptionYear>
-  <url>${github.url}</url>
+  <url>https://github.com/sebhoss/java-parent</url>
   <name>Java Parent</name>
   <description>Parent POM for all Java-based projects</description>
 
@@ -53,11 +53,10 @@
     <coverage>0</coverage>
     <pmd.cpd.tokens>50</pmd.cpd.tokens>
 
-    <github.url>http://github.com/sebhoss/java-parent/</github.url>
     <scm.connection>scm:git:git://github.com/sebhoss/java-parent.git</scm.connection>
     <scm.developerConnection>scm:git:git@github.com:sebhoss/java-parent.git</scm.developerConnection>
-    <scm.url>http://github.com/sebhoss/java-parent</scm.url>
-    <issueManagement.url>http://github.com/sebhoss/java-parent/issues</issueManagement.url>
+    <scm.url>${project.url}</scm.url>
+    <issueManagement.url>${project.url}/issues</issueManagement.url>
   </properties>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
