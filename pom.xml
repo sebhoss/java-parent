@@ -159,27 +159,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
+        <!-- Can't use 3.X due to https://bugs.eclipse.org/bugs/show_bug.cgi?id=405385 -->
+        <version>2.5.1</version>
         <configuration>
           <source>${version.jdk}</source>
           <target>${version.jdk}</target>
           <compilerId>jdt</compilerId>
-          <compilerArgs>
-            <arg>-err:+allDeadCode</arg>
-            <arg>-err:+allDeprecation</arg>
-            <arg>-err:+allJavadoc</arg>
-            <arg>-err:+allOver-ann</arg>
-            <arg>-err:+all-static-method</arg>
-            <arg>-err:+assertIdentifier</arg>
-            <arg>-err:+boxing</arg>
-            <arg>-err:+charConcat</arg>
-            <arg>-err:+compareIdentical</arg>
-            <arg>-err:+conditionAssign</arg>
-            <arg>-err:+constructorName</arg>
-            <arg>-err:+discouraged</arg>
-            <arg>-err:+emptyBlock</arg>
-            <arg>-err:+unused</arg>
-          </compilerArgs>
         </configuration>
         <dependencies>
           <!-- This dependency provides the implementation of compiler "jdt": -->
