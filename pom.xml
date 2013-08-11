@@ -25,7 +25,7 @@
   <!--                               INFORMATIONS                              -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <artifactId>java-parent</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3-SNAPSHOT</version>
   <packaging>pom</packaging>
   <inceptionYear>2013</inceptionYear>
   <url>https://github.com/sebhoss/java-parent</url>
