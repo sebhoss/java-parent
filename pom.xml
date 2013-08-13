@@ -18,7 +18,7 @@
   <parent>
     <groupId>com.github.sebhoss</groupId>
     <artifactId>superpom</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
   </parent>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -36,10 +36,10 @@
   <!--                                  SOURCE                                 -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <scm>
-    <connection>${scm.connection}</connection>
-    <developerConnection>${scm.developerConnection}</developerConnection>
+    <connection>scm:git:git://github.com/sebhoss/java-parent.git</connection>
+    <developerConnection>scm:git:git@github.com:sebhoss/java-parent.git</developerConnection>
     <tag>master</tag>
-    <url>${scm.url}</url>
+    <url>${project.url}</url>
   </scm>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -52,27 +52,7 @@
 
     <coverage>0</coverage>
     <pmd.cpd.tokens>50</pmd.cpd.tokens>
-
-    <scm.connection>scm:git:git://github.com/sebhoss/java-parent.git</scm.connection>
-    <scm.developerConnection>scm:git:git@github.com:sebhoss/java-parent.git</scm.developerConnection>
-    <scm.url>${project.url}</scm.url>
-    <issueManagement.url>${project.url}/issues</issueManagement.url>
   </properties>
-
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!--                               DEPENDENCIES                              -->
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>com.github.sebhoss</groupId>
-        <artifactId>java-bom</artifactId>
-        <version>1.0.1</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!--                                   BUILD                                 -->
