@@ -149,7 +149,7 @@
         </executions>
         <configuration>
           <instructions>
-            <Bundle-Copyright>Sebastian Hoß (mail@shoss.de)</Bundle-Copyright>
+            <Bundle-Copyright>${project.developers[0].name} (${project.developers[0].email})</Bundle-Copyright>
             <Bundle-DocURL>${project.url}</Bundle-DocURL>
           </instructions>
         </configuration>
