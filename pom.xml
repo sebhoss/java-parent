@@ -110,6 +110,9 @@
           <source>${version.jdk}</source>
           <target>${version.jdk}</target>
           <compilerId>jdt</compilerId>
+          <compilerArguments>
+            <properties>${project.basedir}/.settings/org.eclipse.jdt.core.prefs</properties>
+          </compilerArguments>
         </configuration>
         <dependencies>
           <!-- This dependency provides the implementation of compiler "jdt": -->
@@ -211,6 +214,26 @@
               <goal>clean</goal>
               <goal>check</goal>
             </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-remote-resources-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>jdt-compiler-settings</id>
+            <goals>
+              <goal>process</goal>
+            </goals>
+            <configuration>
+              <resourceBundles>
+                <resourceBundle>com.github.sebhoss:jdt-compiler-settings:1.0.0-SNAPSHOT</resourceBundle>
+              </resourceBundles>
+              <outputDirectory>${basedir}/.settings</outputDirectory>
+            </configuration>
           </execution>
         </executions>
       </plugin>
