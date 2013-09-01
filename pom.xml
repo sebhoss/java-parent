@@ -17,14 +17,14 @@
   <parent>
     <groupId>com.github.sebhoss</groupId>
     <artifactId>superpom</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
   </parent>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!--                               INFORMATIONS                              -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <artifactId>java-parent</artifactId>
-  <version>1.0.4-SNAPSHOT</version>
+  <version>1.0.4</version>
   <packaging>pom</packaging>
   <inceptionYear>2013</inceptionYear>
   <url>https://github.com/sebhoss/java-parent</url>
