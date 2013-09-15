@@ -9,3 +9,11 @@ p. Maven parent POM for Java-based projects. Defines several aspects of a build-
 * Findbugs settings
 * PMD settings
 * Cobertura settings
+
+p. Use it as follows:
+
+bc. <parent>
+  <groupId>com.github.sebhoss</groupId>
+  <artifactId>java-parent</artifactId>
+  <version>${version.java-parent}</version>
+</parent>
