@@ -236,6 +236,19 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-doap-plugin</artifactId>
+        <configuration>
+          <doapOptions>
+            <programmingLanguage>Java</programmingLanguage>
+            <category>library</category>
+            <wiki>${project.url}/wiki</wiki>
+            <downloadPage>${project.url}/downloads</downloadPage>
+          </doapOptions>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>
