@@ -245,7 +245,6 @@
             <programmingLanguage>Java</programmingLanguage>
             <category>library</category>
             <wiki>${project.url}/wiki</wiki>
-            <downloadPage>${project.url}/downloads</downloadPage>
           </doapOptions>
         </configuration>
       </plugin>
