@@ -9,6 +9,8 @@ p. Maven parent POM for Java-based projects. Defines several aspects of a build-
 * Findbugs settings
 * PMD settings
 * Cobertura settings
+* Eclipse settings
+* Outputs DOAP file
 
 p. Use it as follows:
 
