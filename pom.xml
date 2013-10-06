@@ -242,7 +242,6 @@
         <artifactId>maven-doap-plugin</artifactId>
         <configuration>
           <doapOptions>
-            <category>library</category>
             <wiki>${project.url}/wiki</wiki>
           </doapOptions>
         </configuration>
