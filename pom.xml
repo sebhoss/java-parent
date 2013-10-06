@@ -246,6 +246,15 @@
             <wiki>${project.url}/wiki</wiki>
           </doapOptions>
         </configuration>
+        <executions>
+          <execution>
+            <id>site</id>
+            <phase>site</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
