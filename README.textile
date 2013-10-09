@@ -11,6 +11,9 @@ p. Maven parent POM for Java-based projects. Defines several aspects of a build-
 * Cobertura settings
 * Eclipse settings
 * Outputs DOAP file
+* Dependency analysis
+* Dependency version check
+* Duplicate check
 
 p. Use it as follows:
 
