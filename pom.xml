@@ -271,6 +271,13 @@
         </executions>
         <configuration>
           <failBuildInCaseOfConflict>true</failBuildInCaseOfConflict>
+          <exceptions>
+            <exception>
+              <resourcePatterns>
+                <resoucePattern>org.eclipse.*</resoucePattern>
+              </resourcePatterns>
+            </exception>
+          </exceptions>
         </configuration>
       </plugin>
 
