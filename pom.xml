@@ -228,6 +228,8 @@
               <goal>process</goal>
             </goals>
             <configuration>
+              <attachToMain>false</attachToMain>
+              <attachToTest>false</attachToTest>
               <resourceBundles>
                 <resourceBundle>com.github.sebhoss:jdt-settings:1.0.2</resourceBundle>
               </resourceBundles>
@@ -271,13 +273,6 @@
         </executions>
         <configuration>
           <failBuildInCaseOfConflict>true</failBuildInCaseOfConflict>
-          <exceptions>
-            <exception>
-              <resourcePatterns>
-                <resoucePattern>org.eclipse.*</resoucePattern>
-              </resourcePatterns>
-            </exception>
-          </exceptions>
         </configuration>
       </plugin>
 
