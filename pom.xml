@@ -103,8 +103,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <!-- Can't use 3.X due to https://bugs.eclipse.org/bugs/show_bug.cgi?id=405385 -->
-        <version>2.5.1</version>
+        <version>3.1</version>
         <configuration>
           <source>${version.jdk}</source>
           <target>${version.jdk}</target>
