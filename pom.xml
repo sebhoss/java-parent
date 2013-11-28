@@ -222,7 +222,7 @@
         <version>1.5</version>
         <executions>
           <execution>
-            <id>jdt-compiler-settings</id>
+            <id>jdt-settings</id>
             <goals>
               <goal>process</goal>
             </goals>
