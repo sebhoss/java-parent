@@ -45,7 +45,7 @@
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <properties>
     <version.jdk>1.7</version.jdk>
-    <version.tycho>0.19</version.tycho>
+    <version.tycho>0.19.0</version.tycho>
 
     <coverage>0</coverage>
     <pmd.cpd.tokens>50</pmd.cpd.tokens>
