@@ -236,7 +236,7 @@
               <attachToMain>false</attachToMain>
               <attachToTest>false</attachToTest>
               <resourceBundles>
-                <resourceBundle>com.github.sebhoss:jdt-settings:1.0.2</resourceBundle>
+                <resourceBundle>com.github.sebhoss:jdt-settings:1.0.3-SNAPSHOT</resourceBundle>
               </resourceBundles>
               <outputDirectory>${project.basedir}/.settings</outputDirectory>
             </configuration>
@@ -304,17 +304,23 @@
         <version>2.8</version>
         <executions>
           <execution>
-            <id>analyze</id>
             <goals>
               <goal>analyze-only</goal>
               <goal>analyze-duplicate</goal>
               <goal>analyze-dep-mgt</goal>
             </goals>
-            <configuration>
-              <failOnWarning>true</failOnWarning>
-            </configuration>
           </execution>
         </executions>
+        <configuration>
+          <failOnWarning>true</failOnWarning>
+              <!--
+                Ignore common annotations because @SuppressWarnings is not retained
+                in byte code. There the plugin detects a false positive.
+              <usedDependencies>
+                <usedDependency>com.github.sebhoss:suppress-warnings</usedDependency>
+              </usedDependencies>
+               -->
+        </configuration>
       </plugin>
     </plugins>
   </build>
