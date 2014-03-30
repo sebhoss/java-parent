@@ -44,7 +44,7 @@
   <!--                                PROPERTIES                               -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <properties>
-    <version.jdk>1.7</version.jdk>
+    <version.jdk>1.8</version.jdk>
     <version.tycho>0.19.0</version.tycho>
 
     <coverage>0</coverage>
