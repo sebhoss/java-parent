@@ -236,7 +236,7 @@
               <attachToMain>false</attachToMain>
               <attachToTest>false</attachToTest>
               <resourceBundles>
-                <resourceBundle>com.github.sebhoss:jdt-settings:1.0.3</resourceBundle>
+                <resourceBundle>com.github.sebhoss:jdt-settings:1.0.4-SNAPSHOT</resourceBundle>
               </resourceBundles>
               <outputDirectory>${project.basedir}/.settings</outputDirectory>
             </configuration>
