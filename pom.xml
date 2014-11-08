@@ -178,12 +178,6 @@
           <failurePriority>0</failurePriority>
           <minimumTokens>${pmd.cpd.tokens}</minimumTokens>
           <targetJdk>${version.jdk}</targetJdk>
-          <!-- Set default rule sets to avoid https://github.com/m2e-code-quality/m2e-code-quality/issues/33 -->
-          <rulesets>
-            <ruleset>/rulesets/java/basic.xml</ruleset>
-            <ruleset>/rulesets/java/unusedcode.xml</ruleset>
-            <ruleset>/rulesets/java/imports.xml</ruleset>
-          </rulesets>
         </configuration>
         <executions>
           <execution>
