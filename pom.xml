@@ -110,6 +110,7 @@
           <compilerArguments>
             <properties>${project.basedir}/.settings/org.eclipse.jdt.core.prefs</properties>
           </compilerArguments>
+          <compilerArgument>-parameters</compilerArgument>
         </configuration>
         <dependencies>
           <!-- This dependency provides the implementation of compiler "jdt": -->
