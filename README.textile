@@ -8,12 +8,13 @@ p. Maven parent POM for Java-based projects. Defines several aspects of a build-
 * OSGi infos
 * Findbugs settings
 * PMD settings
-* Cobertura settings
+* JaCoCo settings
 * Eclipse settings
-* Outputs DOAP file
 * Dependency analysis
 * Dependency version check
 * Duplicate check
+* Project report generation
+* GitHub Pages deployment
 
 p. Use it as follows:
 
