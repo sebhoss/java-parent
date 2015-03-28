@@ -48,6 +48,10 @@
 
     <coverage>1.00000</coverage>
     <pmd.cpd.tokens>50</pmd.cpd.tokens>
+
+    <version.m-pmd-p>3.4</version.m-pmd-p>
+    <version.m-javadoc-p>2.10.2</version.m-javadoc-p>
+    <version.findbugs-m-p>3.0.1</version.findbugs-m-p>
   </properties>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -78,7 +82,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.2</version>
+        <version>${version.m-javadoc-p}</version>
         <configuration>
           <outputDirectory>${project.build.directory}/api</outputDirectory>
           <archive>
@@ -121,7 +125,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>2.5</version>
+        <version>2.6</version>
         <configuration>
           <archive>
             <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
@@ -153,7 +157,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
-        <version>3.0.1</version>
+        <version>${version.findbugs-m-p}</version>
         <configuration>
           <effort>Max</effort>
           <threshold>Low</threshold>
@@ -170,7 +174,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.4</version>
+        <version>${version.m-pmd-p}</version>
         <configuration>
           <failurePriority>0</failurePriority>
           <minimumTokens>${pmd.cpd.tokens}</minimumTokens>
@@ -329,13 +333,13 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.3</version>
+        <version>${version.m-pmd-p}</version>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.1</version>
+        <version>${version.m-javadoc-p}</version>
         <configuration>
           <outputDirectory>${project.build.directory}/api</outputDirectory>
         </configuration>
@@ -344,7 +348,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>${version.findbugs-m-p}</version>
       </plugin>
     </plugins>
   </reporting>
