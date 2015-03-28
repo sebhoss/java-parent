@@ -170,7 +170,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.3</version>
+        <version>3.4</version>
         <configuration>
           <failurePriority>0</failurePriority>
           <minimumTokens>${pmd.cpd.tokens}</minimumTokens>
