@@ -65,6 +65,7 @@ $ git checkout -b issue-123/nick # Nick's branch
 
 * Commits should be ordered *logically*. For example, if *commit X* depends on changes done in *commit Y*, then *commit Y* should come before *commit X*.
 
+
 [[messages]]
 === Messages
 
@@ -95,6 +96,7 @@ $ git checkout -b issue-123/nick # Nick's branch
 
 * Tip: Use the `--autosquash` flag when rebasing. The marked commits will be squashed automatically.
 
+
 [[merging]]
 == Merging
 
@@ -124,6 +126,7 @@ $ git checkout -b issue-123/nick # Nick's branch
 
 * All merges are expected to be handled by GitHubs pull request feature.
 
+
 [[misc]]
 == Misc.
 
@@ -139,11 +142,13 @@ $ git checkout -b issue-123/nick # Nick's branch
 ** http://git-scm.com/docs/git-prune[`git-prune(1)`]
 ** http://git-scm.com/docs/git-fsck[`git-fsck(1)`]
 
+
 = License
 
 image:http://i.creativecommons.org/l/by-nc/3.0/88x31.png["CC BY-NC 3.0", link="http://creativecommons.org/licenses/by-nc/4.0/"]
 
 This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International license.
+
 
 = Credits
 
