@@ -7,7 +7,7 @@ help:
 	@echo "   1. make sonar-analysis        - perform sonar analysis"
 
 sonar-analysis:
-	@mvn sonar:sonar -Dsonar.host.url=http://localhost:59000 -Dsonar.jdbc.url=jdbc:postgresql://localhost:59100/sonar
+	@mvn sonar:sonar -Dsonar.host.url=http://localhost:51000 -Dsonar.jdbc.url=jdbc:postgresql://localhost:51100/sonar
 
 docker-verify:
 	@docker-compose -f build/docker/build-environment.yml up
