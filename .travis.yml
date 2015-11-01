@@ -1,4 +1,21 @@
+# see http://docs.travis-ci.com/user/languages/java/
 language: java
 jdk:
   - oraclejdk8
+
+# see http://docs.travis-ci.com/user/workers/container-based-infrastructure/
 sudo: false
+
+# see http://docs.travis-ci.com/user/caching/#Arbitrary-directories
+cache:
+  directories:
+  - $HOME/.m2
+
+# see http://docs.travis-ci.com/user/notifications/
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/42cb2115cb4f693ebe05
+    on_success: always  # options: [always|never|change]
+    on_failure: always  # options: [always|never|change]
+    on_start: false     # default: false
