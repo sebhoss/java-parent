@@ -31,5 +31,5 @@ build:
    - "../../:/code"
   working_dir: /code
   external_links:
-   - artifactory_artifactory_1:artifactory
+   - nexus_nexus_1:nexus
   command: mvn clean verify -s build/docker/settings.xml
