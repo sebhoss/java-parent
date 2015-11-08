@@ -93,7 +93,7 @@
     <version.jacoco-m-p>0.7.5.201505241946</version.jacoco-m-p>
     <version.m-surefire-report-p>2.18.1</version.m-surefire-report-p>
 
-    <version.tycho-compiler-jdt>0.23.1</version.tycho-compiler-jdt>
+    <version.tycho-compiler-jdt>0.24.0</version.tycho-compiler-jdt>
     <version.jdt-settings>2.0.0</version.jdt-settings>
   </properties>
 
