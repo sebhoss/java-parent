@@ -18,6 +18,7 @@ Maven parent POM for Java-based projects. Defines several aspects of a build-pro
 * Dependency analysis
 * Dependency version check
 * Duplicate check
+* Pitest mutation coverage
 * Project report generation
 * GitHub Pages deployment
 
