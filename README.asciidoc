@@ -31,3 +31,5 @@ Use it as follows:
   <version>${version.java-parent}</version>
 </parent>
 ----
+
+Replace `${version.java-parent}` with http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.sebhoss%22%20a%3A%22java-parent%22[the latest release]. 
