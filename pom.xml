@@ -86,7 +86,7 @@
     <version.m-jar-p>2.6</version.m-jar-p>
     <version.m-compiler-p>3.3</version.m-compiler-p>
     <version.m-source-p>2.4</version.m-source-p>
-    <version.findbugs-m-p>3.0.1</version.findbugs-m-p>
+    <version.findbugs-m-p>3.0.3</version.findbugs-m-p>
     <version.pittest-m-p>1.1.7</version.pittest-m-p>
     <version.duplicate-finder-m-p>1.2.1</version.duplicate-finder-m-p>
     <version.coveralls-m-p>3.1.0</version.coveralls-m-p>
