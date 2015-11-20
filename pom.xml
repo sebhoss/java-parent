@@ -104,10 +104,12 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <!-- https://maven.apache.org/plugins/maven-source-plugin/ -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
           <version>${version.m-source-p}</version>
           <configuration>
+            <!-- https://maven.apache.org/plugins/maven-source-plugin/jar-no-fork-mojo.html#archive -->
             <archive>
               <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
             </archive>
@@ -117,6 +119,7 @@
               <id>attach-sources</id>
               <phase>verify</phase>
               <goals>
+                <!-- https://maven.apache.org/plugins/maven-source-plugin/jar-no-fork-mojo.html -->
                 <goal>jar-no-fork</goal>
               </goals>
             </execution>
@@ -124,11 +127,14 @@
         </plugin>
 
         <plugin>
+          <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/ -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>${version.m-javadoc-p}</version>
           <configuration>
+            <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/jar-mojo.html#outputDirectory -->
             <outputDirectory>${project.build.directory}/api</outputDirectory>
+            <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/jar-mojo.html#archive -->
             <archive>
               <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
             </archive>
@@ -137,6 +143,7 @@
             <execution>
               <id>attach-javadocs</id>
               <goals>
+                <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/jar-mojo.html -->
                 <goal>jar</goal>
               </goals>
             </execution>
@@ -144,21 +151,27 @@
         </plugin>
 
         <plugin>
+          <!-- https://maven.apache.org/plugins/maven-compiler-plugin/ -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>${version.m-compiler-p}</version>
           <configuration>
+            <!-- https://maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html#source -->
             <source>${version.jdk}</source>
+            <!-- https://maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html#target -->
             <target>${version.jdk}</target>
+            <!-- https://maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html#compilerId -->
             <compilerId>jdt</compilerId>
-            <compilerArguments>
-              <properties>${project.basedir}/.settings/org.eclipse.jdt.core.prefs</properties>
-            </compilerArguments>
+            <!-- https://eclipse.org/tycho/sitedocs/tycho-compiler-plugin/compile-mojo.html#useProjectSettings -->
+            <useProjectSettings>true</useProjectSettings>
+            <!-- https://maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html#compilerArgument -->
+            <!-- https://docs.oracle.com/javase/8/docs/technotes/tools/unix/javac.html -->
             <compilerArgument>-parameters</compilerArgument>
           </configuration>
           <dependencies>
-            <!-- This dependency provides the implementation of compiler "jdt": -->
+            <!-- This dependency provides the implementation of compiler "jdt" -->
             <dependency>
+              <!-- https://eclipse.org/tycho/sitedocs/ -->
               <groupId>org.eclipse.tycho</groupId>
               <artifactId>tycho-compiler-jdt</artifactId>
               <version>${version.tycho-compiler-jdt}</version>
@@ -167,10 +180,12 @@
         </plugin>
 
         <plugin>
+          <!-- https://maven.apache.org/plugins/maven-jar-plugin/ -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
           <version>${version.m-jar-p}</version>
           <configuration>
+            <!-- https://maven.apache.org/plugins/maven-jar-plugin/jar-mojo.html#archive -->
             <archive>
               <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
             </archive>
@@ -178,6 +193,7 @@
         </plugin>
 
         <plugin>
+          <!-- http://felix.apache.org/components/bundle-plugin/ -->
           <groupId>org.apache.felix</groupId>
           <artifactId>maven-bundle-plugin</artifactId>
           <version>${version.m-bundle-p}</version>
@@ -186,11 +202,13 @@
               <id>bundle-manifest</id>
               <phase>process-classes</phase>
               <goals>
+                <!-- http://felix.apache.org/components/bundle-plugin/manifest-mojo.html -->
                 <goal>manifest</goal>
               </goals>
             </execution>
           </executions>
           <configuration>
+            <!-- http://felix.apache.org/components/bundle-plugin/manifest-mojo.html#instructions -->
             <instructions>
               <Bundle-Copyright>${project.developers[0].name} (${project.developers[0].email})</Bundle-Copyright>
               <Bundle-DocURL>${project.url}</Bundle-DocURL>
@@ -199,16 +217,20 @@
         </plugin>
 
         <plugin>
+          <!-- http://gleclaire.github.io/findbugs-maven-plugin/ -->
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>findbugs-maven-plugin</artifactId>
           <version>${version.findbugs-m-p}</version>
           <configuration>
+            <!-- http://gleclaire.github.io/findbugs-maven-plugin/check-mojo.html#effort -->
             <effort>${findbugs.effort}</effort>
+            <!-- http://gleclaire.github.io/findbugs-maven-plugin/check-mojo.html#threshold -->
             <threshold>${findbugs.threshold}</threshold>
           </configuration>
           <executions>
             <execution>
               <goals>
+                <!-- http://gleclaire.github.io/findbugs-maven-plugin/check-mojo.html -->
                 <goal>check</goal>
               </goals>
             </execution>
@@ -216,18 +238,24 @@
         </plugin>
 
         <plugin>
+          <!-- https://maven.apache.org/plugins/maven-pmd-plugin/ -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-pmd-plugin</artifactId>
           <version>${version.m-pmd-p}</version>
           <configuration>
+            <!-- https://maven.apache.org/plugins/maven-pmd-plugin/check-mojo.html#failurePriority -->
             <failurePriority>${pmd.failurePriority}</failurePriority>
+            <!-- https://maven.apache.org/plugins/maven-pmd-plugin/cpd-mojo.html#minimumTokens -->
             <minimumTokens>${pmd.minimumTokens}</minimumTokens>
+            <!-- https://maven.apache.org/plugins/maven-pmd-plugin/pmd-mojo.html#targetJdk -->
             <targetJdk>${version.jdk}</targetJdk>
           </configuration>
           <executions>
             <execution>
               <goals>
+                <!-- https://maven.apache.org/plugins/maven-pmd-plugin/check-mojo.html -->
                 <goal>check</goal>
+                <!-- https://maven.apache.org/plugins/maven-pmd-plugin/cpd-check-mojo.html -->
                 <goal>cpd-check</goal>
               </goals>
             </execution>
@@ -235,6 +263,7 @@
         </plugin>
 
         <plugin>
+          <!-- http://eclemma.org/jacoco/trunk/doc/maven.html -->
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
           <version>${version.jacoco-m-p}</version>
@@ -242,15 +271,18 @@
             <execution>
               <id>prepare-coverage-agent</id>
               <goals>
+                <!-- http://eclemma.org/jacoco/trunk/doc/prepare-agent-mojo.html -->
                 <goal>prepare-agent</goal>
               </goals>
             </execution>
             <execution>
               <id>check-coverage</id>
               <goals>
+                <!-- http://eclemma.org/jacoco/trunk/doc/check-mojo.html -->
                 <goal>check</goal>
               </goals>
               <configuration>
+                <!-- http://eclemma.org/jacoco/trunk/doc/check-mojo.html#rules -->
                 <rules>
                   <rule>
                     <element>CLASS</element>
@@ -272,6 +304,7 @@
         </plugin>
 
         <plugin>
+          <!-- https://github.com/trautonen/coveralls-maven-plugin -->
           <groupId>org.eluder.coveralls</groupId>
           <artifactId>coveralls-maven-plugin</artifactId>
           <version>${version.coveralls-m-p}</version>
@@ -281,6 +314,7 @@
         </plugin>
 
         <plugin>
+          <!-- https://maven.apache.org/plugins/maven-remote-resources-plugin/ -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-remote-resources-plugin</artifactId>
           <version>${version.m-remote-resources-p}</version>
@@ -288,14 +322,19 @@
             <execution>
               <id>jdt-settings</id>
               <goals>
+                <!-- https://maven.apache.org/plugins/maven-remote-resources-plugin/process-mojo.html -->
                 <goal>process</goal>
               </goals>
               <configuration>
+                <!-- https://maven.apache.org/plugins/maven-remote-resources-plugin/process-mojo.html#attachToMain -->
                 <attachToMain>false</attachToMain>
+                <!-- https://maven.apache.org/plugins/maven-remote-resources-plugin/process-mojo.html#attachToTest -->
                 <attachToTest>false</attachToTest>
+                <!-- https://maven.apache.org/plugins/maven-remote-resources-plugin/process-mojo.html#resourceBundles -->
                 <resourceBundles>
                   <resourceBundle>com.github.sebhoss:jdt-settings:${version.jdt-settings}</resourceBundle>
                 </resourceBundles>
+                <!-- https://maven.apache.org/plugins/maven-remote-resources-plugin/process-mojo.html#outputDirectory -->
                 <outputDirectory>${project.basedir}/.settings</outputDirectory>
               </configuration>
             </execution>
@@ -303,6 +342,7 @@
         </plugin>
 
         <plugin>
+          <!-- https://github.com/basepom/duplicate-finder-maven-plugin -->
           <groupId>org.basepom.maven</groupId>
           <artifactId>duplicate-finder-maven-plugin</artifactId>
           <version>${version.duplicate-finder-m-p}</version>
@@ -315,6 +355,7 @@
             </execution>
           </executions>
           <configuration>
+            <!-- https://github.com/basepom/duplicate-finder-maven-plugin/wiki#configuration-overview -->
             <ignoredResourcePatterns>
               <ignoredResourcePattern>.*\.html</ignoredResourcePattern>
             </ignoredResourcePatterns>
@@ -323,6 +364,7 @@
         </plugin>
 
         <plugin>
+          <!-- https://github.com/ning/maven-dependency-versions-check-plugin -->
           <groupId>com.ning.maven.plugins</groupId>
           <artifactId>maven-dependency-versions-check-plugin</artifactId>
           <version>${version.m-dependency-versions-check-p}</version>
@@ -330,30 +372,38 @@
             <execution>
               <phase>verify</phase>
               <goals>
+                <!-- https://github.com/ning/maven-dependency-versions-check-plugin#the-check-goal -->
                 <goal>check</goal>
               </goals>
             </execution>
           </executions>
           <configuration>
+            <!-- https://github.com/ning/maven-dependency-versions-check-plugin#failbuildincaseofconflict-check-only -->
             <failBuildInCaseOfConflict>${failBuildOnDependencyVersionProblem}</failBuildInCaseOfConflict>
           </configuration>
         </plugin>
 
         <plugin>
+          <!-- https://maven.apache.org/plugins/maven-dependency-plugin/ -->
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
           <version>${version.m-dependency-p}</version>
           <executions>
             <execution>
               <goals>
+                <!-- https://maven.apache.org/plugins/maven-dependency-plugin/analyze-only-mojo.html -->
                 <goal>analyze-only</goal>
+                <!-- https://maven.apache.org/plugins/maven-dependency-plugin/analyze-duplicate-mojo.html -->
                 <goal>analyze-duplicate</goal>
+                <!-- https://maven.apache.org/plugins/maven-dependency-plugin/analyze-dep-mgt-mojo.html -->
                 <goal>analyze-dep-mgt</goal>
               </goals>
             </execution>
           </executions>
           <configuration>
+            <!-- https://maven.apache.org/plugins/maven-dependency-plugin/analyze-mojo.html#failOnWarning -->
             <failOnWarning>${failBuildOnDependencyProblem}</failOnWarning>
+            <!-- https://maven.apache.org/plugins/maven-dependency-plugin/analyze-mojo.html#ignoredDependencies -->
             <ignoredDependencies>
               <ignoredDependency>com.github.sebhoss:suppress-warnings</ignoredDependency>
             </ignoredDependencies>
@@ -361,6 +411,7 @@
         </plugin>
 
         <plugin>
+          <!-- http://pitest.org/quickstart/maven/ -->
           <groupId>org.pitest</groupId>
           <artifactId>pitest-maven</artifactId>
           <version>${version.pittest-m-p}</version>
