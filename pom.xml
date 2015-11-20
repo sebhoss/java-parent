@@ -91,7 +91,7 @@
     <version.duplicate-finder-m-p>1.2.1</version.duplicate-finder-m-p>
     <version.coveralls-m-p>3.1.0</version.coveralls-m-p>
     <version.jacoco-m-p>0.7.5.201505241946</version.jacoco-m-p>
-    <version.m-surefire-report-p>2.18.1</version.m-surefire-report-p>
+    <version.m-surefire-report-p>2.19</version.m-surefire-report-p>
 
     <version.tycho-compiler-jdt>0.24.0</version.tycho-compiler-jdt>
     <version.jdt-settings>2.0.0</version.jdt-settings>
