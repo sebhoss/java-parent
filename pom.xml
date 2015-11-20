@@ -101,286 +101,361 @@
   <!--                                   BUILD                                 -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${version.m-source-p}</version>
+          <configuration>
+            <archive>
+              <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+            </archive>
+          </configuration>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>jar-no-fork</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${version.m-javadoc-p}</version>
+          <configuration>
+            <outputDirectory>${project.build.directory}/api</outputDirectory>
+            <archive>
+              <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+            </archive>
+          </configuration>
+          <executions>
+            <execution>
+              <id>attach-javadocs</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${version.m-compiler-p}</version>
+          <configuration>
+            <source>${version.jdk}</source>
+            <target>${version.jdk}</target>
+            <compilerId>jdt</compilerId>
+            <compilerArguments>
+              <properties>${project.basedir}/.settings/org.eclipse.jdt.core.prefs</properties>
+            </compilerArguments>
+            <compilerArgument>-parameters</compilerArgument>
+          </configuration>
+          <dependencies>
+            <!-- This dependency provides the implementation of compiler "jdt": -->
+            <dependency>
+              <groupId>org.eclipse.tycho</groupId>
+              <artifactId>tycho-compiler-jdt</artifactId>
+              <version>${version.tycho-compiler-jdt}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${version.m-jar-p}</version>
+          <configuration>
+            <archive>
+              <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+            </archive>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-bundle-plugin</artifactId>
+          <version>${version.m-bundle-p}</version>
+          <executions>
+            <execution>
+              <id>bundle-manifest</id>
+              <phase>process-classes</phase>
+              <goals>
+                <goal>manifest</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <instructions>
+              <Bundle-Copyright>${project.developers[0].name} (${project.developers[0].email})</Bundle-Copyright>
+              <Bundle-DocURL>${project.url}</Bundle-DocURL>
+            </instructions>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>findbugs-maven-plugin</artifactId>
+          <version>${version.findbugs-m-p}</version>
+          <configuration>
+            <effort>${findbugs.effort}</effort>
+            <threshold>${findbugs.threshold}</threshold>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>check</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-pmd-plugin</artifactId>
+          <version>${version.m-pmd-p}</version>
+          <configuration>
+            <failurePriority>${pmd.failurePriority}</failurePriority>
+            <minimumTokens>${pmd.minimumTokens}</minimumTokens>
+            <targetJdk>${version.jdk}</targetJdk>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>check</goal>
+                <goal>cpd-check</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>${version.jacoco-m-p}</version>
+          <executions>
+            <execution>
+              <id>prepare-coverage-agent</id>
+              <goals>
+                <goal>prepare-agent</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>check-coverage</id>
+              <goals>
+                <goal>check</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <rule>
+                    <element>CLASS</element>
+                    <excludes>
+                      <exclude>*Test</exclude>
+                    </excludes>
+                    <limits>
+                      <limit>
+                        <counter>LINE</counter>
+                        <value>COVEREDRATIO</value>
+                        <minimum>${jacoco.lineCoverage}</minimum>
+                      </limit>
+                    </limits>
+                  </rule>
+                </rules>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.eluder.coveralls</groupId>
+          <artifactId>coveralls-maven-plugin</artifactId>
+          <version>${version.coveralls-m-p}</version>
+          <configuration>
+            <repoToken>${COVERALLS_TOKEN}</repoToken>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-remote-resources-plugin</artifactId>
+          <version>${version.m-remote-resources-p}</version>
+          <executions>
+            <execution>
+              <id>jdt-settings</id>
+              <goals>
+                <goal>process</goal>
+              </goals>
+              <configuration>
+                <attachToMain>false</attachToMain>
+                <attachToTest>false</attachToTest>
+                <resourceBundles>
+                  <resourceBundle>com.github.sebhoss:jdt-settings:${version.jdt-settings}</resourceBundle>
+                </resourceBundles>
+                <outputDirectory>${project.basedir}/.settings</outputDirectory>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.basepom.maven</groupId>
+          <artifactId>duplicate-finder-maven-plugin</artifactId>
+          <version>${version.duplicate-finder-m-p}</version>
+          <executions>
+            <execution>
+              <phase>verify</phase>
+              <goals>
+                <goal>check</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <ignoredResourcePatterns>
+              <ignoredResourcePattern>.*\.html</ignoredResourcePattern>
+            </ignoredResourcePatterns>
+            <failBuildInCaseOfConflict>${failBuildOnDuplicates}</failBuildInCaseOfConflict>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>com.ning.maven.plugins</groupId>
+          <artifactId>maven-dependency-versions-check-plugin</artifactId>
+          <version>${version.m-dependency-versions-check-p}</version>
+          <executions>
+            <execution>
+              <phase>verify</phase>
+              <goals>
+                <goal>check</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <failBuildInCaseOfConflict>${failBuildOnDependencyVersionProblem}</failBuildInCaseOfConflict>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>${version.m-dependency-p}</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>analyze-only</goal>
+                <goal>analyze-duplicate</goal>
+                <goal>analyze-dep-mgt</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <failOnWarning>${failBuildOnDependencyProblem}</failOnWarning>
+            <ignoredDependencies>
+              <ignoredDependency>com.github.sebhoss:suppress-warnings</ignoredDependency>
+            </ignoredDependencies>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.pitest</groupId>
+          <artifactId>pitest-maven</artifactId>
+          <version>${version.pittest-m-p}</version>
+          <configuration>
+            <threads>${pit.threads}</threads>
+            <mutationThreshold>${pit.mutationCoverage}</mutationThreshold>
+            <targetClasses>
+              <param>com.github.sebhoss*</param>
+            </targetClasses>
+            <targetTests>
+              <param>com.github.sebhoss*</param>
+            </targetTests>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>mutationCoverage</goal>
+              </goals>
+              <phase>verify</phase>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <!-- Default build for all java projects include the following plugins -->
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>${version.m-source-p}</version>
-        <configuration>
-          <archive>
-            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-          </archive>
-        </configuration>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>jar-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>${version.m-javadoc-p}</version>
-        <configuration>
-          <outputDirectory>${project.build.directory}/api</outputDirectory>
-          <archive>
-            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-          </archive>
-        </configuration>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>${version.m-compiler-p}</version>
-        <configuration>
-          <source>${version.jdk}</source>
-          <target>${version.jdk}</target>
-          <compilerId>jdt</compilerId>
-          <compilerArguments>
-            <properties>${project.basedir}/.settings/org.eclipse.jdt.core.prefs</properties>
-          </compilerArguments>
-          <compilerArgument>-parameters</compilerArgument>
-        </configuration>
-        <dependencies>
-          <!-- This dependency provides the implementation of compiler "jdt": -->
-          <dependency>
-            <groupId>org.eclipse.tycho</groupId>
-            <artifactId>tycho-compiler-jdt</artifactId>
-            <version>${version.tycho-compiler-jdt}</version>
-          </dependency>
-        </dependencies>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>${version.m-jar-p}</version>
-        <configuration>
-          <archive>
-            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-          </archive>
-        </configuration>
       </plugin>
 
       <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
-        <version>${version.m-bundle-p}</version>
-        <executions>
-          <execution>
-            <id>bundle-manifest</id>
-            <phase>process-classes</phase>
-            <goals>
-              <goal>manifest</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <instructions>
-            <Bundle-Copyright>${project.developers[0].name} (${project.developers[0].email})</Bundle-Copyright>
-            <Bundle-DocURL>${project.url}</Bundle-DocURL>
-          </instructions>
-        </configuration>
       </plugin>
 
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
-        <version>${version.findbugs-m-p}</version>
-        <configuration>
-          <effort>${findbugs.effort}</effort>
-          <threshold>${findbugs.threshold}</threshold>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>${version.m-pmd-p}</version>
-        <configuration>
-          <failurePriority>${pmd.failurePriority}</failurePriority>
-          <minimumTokens>${pmd.minimumTokens}</minimumTokens>
-          <targetJdk>${version.jdk}</targetJdk>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-              <goal>cpd-check</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
 
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>${version.jacoco-m-p}</version>
-        <executions>
-          <execution>
-            <id>prepare-coverage-agent</id>
-            <goals>
-              <goal>prepare-agent</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>check-coverage</id>
-            <goals>
-              <goal>check</goal>
-            </goals>
-            <configuration>
-              <rules>
-                <rule>
-                  <element>CLASS</element>
-                  <excludes>
-                    <exclude>*Test</exclude>
-                  </excludes>
-                  <limits>
-                    <limit>
-                      <counter>LINE</counter>
-                      <value>COVEREDRATIO</value>
-                      <minimum>${jacoco.lineCoverage}</minimum>
-                    </limit>
-                  </limits>
-                </rule>
-              </rules>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
 
       <plugin>
         <groupId>org.eluder.coveralls</groupId>
         <artifactId>coveralls-maven-plugin</artifactId>
-        <version>${version.coveralls-m-p}</version>
-        <configuration>
-          <repoToken>${COVERALLS_TOKEN}</repoToken>
-        </configuration>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-remote-resources-plugin</artifactId>
-        <version>${version.m-remote-resources-p}</version>
-        <executions>
-          <execution>
-            <id>jdt-settings</id>
-            <goals>
-              <goal>process</goal>
-            </goals>
-            <configuration>
-              <attachToMain>false</attachToMain>
-              <attachToTest>false</attachToTest>
-              <resourceBundles>
-                <resourceBundle>com.github.sebhoss:jdt-settings:${version.jdt-settings}</resourceBundle>
-              </resourceBundles>
-              <outputDirectory>${project.basedir}/.settings</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
 
       <plugin>
         <groupId>org.basepom.maven</groupId>
         <artifactId>duplicate-finder-maven-plugin</artifactId>
-        <version>${version.duplicate-finder-m-p}</version>
-        <executions>
-          <execution>
-            <phase>verify</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <ignoredResourcePatterns>
-            <ignoredResourcePattern>.*\.html</ignoredResourcePattern>
-          </ignoredResourcePatterns>
-          <failBuildInCaseOfConflict>${failBuildOnDuplicates}</failBuildInCaseOfConflict>
-        </configuration>
       </plugin>
 
       <plugin>
         <groupId>com.ning.maven.plugins</groupId>
         <artifactId>maven-dependency-versions-check-plugin</artifactId>
-        <version>${version.m-dependency-versions-check-p}</version>
-        <executions>
-          <execution>
-            <phase>verify</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <failBuildInCaseOfConflict>${failBuildOnDependencyVersionProblem}</failBuildInCaseOfConflict>
-        </configuration>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
-        <version>${version.m-dependency-p}</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>analyze-only</goal>
-              <goal>analyze-duplicate</goal>
-              <goal>analyze-dep-mgt</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <failOnWarning>${failBuildOnDependencyProblem}</failOnWarning>
-          <ignoredDependencies>
-            <ignoredDependency>com.github.sebhoss:suppress-warnings</ignoredDependency>
-          </ignoredDependencies>
-        </configuration>
       </plugin>
 
       <plugin>
         <groupId>org.pitest</groupId>
         <artifactId>pitest-maven</artifactId>
-        <version>${version.pittest-m-p}</version>
-        <configuration>
-          <threads>${pit.threads}</threads>
-          <mutationThreshold>${pit.mutationCoverage}</mutationThreshold>
-          <targetClasses>
-            <param>com.github.sebhoss*</param>
-          </targetClasses>
-          <targetTests>
-            <param>com.github.sebhoss*</param>
-          </targetTests>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>mutationCoverage</goal>
-            </goals>
-            <phase>verify</phase>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
