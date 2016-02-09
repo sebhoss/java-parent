@@ -418,6 +418,7 @@
           <configuration>
             <threads>${pit.threads}</threads>
             <mutationThreshold>${pit.mutationCoverage}</mutationThreshold>
+            <skip>${skipTests}</skip>
             <targetClasses>
               <param>com.github.sebhoss*</param>
             </targetClasses>
