@@ -19,3 +19,5 @@ notifications:
     on_success: always  # options: [always|never|change]
     on_failure: always  # options: [always|never|change]
     on_start: false     # default: false
+  slack:
+    secure: DaKXzJPZzi2/mkCtJRLVkJ+UYO7+tA2afQ0aDrG91xK5uHFyWCtstdVe+4/F00WamtHnuc+pFNRP2YQywFknd0KaR57Ny2/Thd55qfkoOa6s9INp4ZJUzRTe5hMhrzn/mmW2khmWwRlPaqXif0F3qS+xTxULM4Ys14RCd5ESGIE=
