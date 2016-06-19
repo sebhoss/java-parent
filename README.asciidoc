@@ -1,3 +1,5 @@
+*Superseded by https://github.com/sebhoss/maven-build-process - only here for historical purposes!*
+
 = Java Parent
 
 image:https://img.shields.io/maven-central/v/com.github.sebhoss/java-parent.svg?style=flat-square["Maven Central", link="https://maven-badges.herokuapp.com/maven-central/com.github.sebhoss/java-parent"]
